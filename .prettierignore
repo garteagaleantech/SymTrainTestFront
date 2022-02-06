@@ -1,0 +1,10 @@
+# Configuration
+tsconfig.json
+docker-compose.yml
+.env
+
+# Dependencies
+node_modules
+
+# Distribution
+dist

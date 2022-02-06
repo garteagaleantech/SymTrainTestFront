@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+# Configuration
+.eslintrc.js
+.env
+
+# Distribution
+dist
