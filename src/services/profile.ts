@@ -8,7 +8,7 @@ const profileKeys = {
   all: ['profile']
 };
 
-const userProfile = (): UseQueryResult<User, ErrorResponse> => {
+const useProfile = (): UseQueryResult<User, ErrorResponse> => {
   const { authRequest } = useFetch();
   const token = useToken().getToken();
   const { logout } = useLogout();
@@ -32,4 +32,4 @@ const userProfile = (): UseQueryResult<User, ErrorResponse> => {
   );
 };
 
-export { userProfile };
+export { useProfile };

@@ -1,6 +1,6 @@
 import { FullPageErrorFallback } from '@components/full-page-error-fallback';
 import { Spinner } from '@components/spinner';
-import { userProfile } from '@services/profile';
+import { useProfile } from '@services/profile';
 
 import { Suspense, lazy } from 'react';
 
@@ -19,7 +19,7 @@ const UnauthenticatedApp = lazy(
 );
 
 export const Main = (): React.ReactElement => {
-  const userQuery = userProfile();
+  const userQuery = useProfile();
 
   if (userQuery.isLoading) {
     return <Spinner fullScreen />;

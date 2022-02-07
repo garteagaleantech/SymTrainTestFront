@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { userProfile } from '@services/profile';
+import { useProfile } from '@services/profile';
 
 type CanProps = {
   I: boolean;
@@ -12,7 +12,7 @@ export const Can = ({
   not,
   children
 }: CanProps): React.ReactElement | null => {
-  const userQuery = userProfile();
+  const userQuery = useProfile();
 
   if (not) {
     return userQuery.data ? null : <Fragment>{children}</Fragment>;

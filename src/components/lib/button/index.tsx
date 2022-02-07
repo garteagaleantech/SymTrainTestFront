@@ -23,7 +23,8 @@ export const Button = ({
   appearance = 'primary',
   isLoading,
   disabled,
-  children
+  children,
+  ...props
 }: ButtonProps): React.ReactElement => (
   <button
     type={type}
@@ -34,6 +35,7 @@ export const Button = ({
       !!disabled && 'cursor-not-allowed bg-opacity-60 text-opacity-60'
     )}
     disabled={isLoading || disabled}
+    {...props}
   >
     {isLoading && <AiOutlineLoading3Quarters className={'mt-1 animate-spin'} />}
     {children}

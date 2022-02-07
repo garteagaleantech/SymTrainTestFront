@@ -16,6 +16,7 @@ const AuthenticatedApp = ({
     <AuthLayout>
       <Routes>
         <Route path={BASE_PATH} element={<Dashboard />} />
+        <Route path="*" element={<Navigate to={BASE_PATH} />} />
       </Routes>
     </AuthLayout>
   </UserProvider>

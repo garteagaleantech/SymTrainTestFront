@@ -43,8 +43,6 @@ const useLogin = (): UseMutationResult<
         }
       );
 
-      console.log(data);
-
       return data;
     },
     {
