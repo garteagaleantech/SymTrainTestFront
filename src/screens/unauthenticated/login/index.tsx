@@ -9,7 +9,7 @@ export const Login = (): React.ReactElement => {
   const { mutateAsync: doSignUp, isLoading } = useLogin();
   const navigate = useNavigate();
 
-  const onSubmit = (credentials: Credentials) => {
+  const onSubmit = (credentials: Credentials): void => {
     const promise = doSignUp(credentials, {
       onSuccess: () => {
         navigate(BASE_PATH);

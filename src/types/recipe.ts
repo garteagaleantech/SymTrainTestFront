@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type Recipe = {
+type Recipe = {
   id: number;
   userId: string;
   title: string;
@@ -9,6 +9,8 @@ export type Recipe = {
   user: User;
 };
 
-export type CreateRecipe = Omit<Recipe, 'id' | 'user' | 'userId'>;
+type CreateRecipe = Omit<Recipe, 'id' | 'user' | 'userId'>;
 
-export type UpdateRecipe = Omit<Recipe, 'user' | 'userId'>;
+type UpdateRecipe = Omit<Recipe, 'user' | 'userId'>;
+
+export type { Recipe, CreateRecipe, UpdateRecipe };

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
+
   return (
     <div className="w-full text-center">
       <h1 className="text-xl font-bold">Welcome to Recipes!</h1>

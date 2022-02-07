@@ -1,9 +1,13 @@
-# Dependencies
-node_modules
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+package-lock.json
 
-# Configuration
-.eslintrc.js
-.env
+# testing
+/coverage
 
-# Distribution
-dist
+# production
+/build
+
+/public/mockServiceWorker.js

@@ -1,4 +1,4 @@
-export type PaginatedRequest = {
+type PaginatedRequest = {
   search?: string;
   page?: number;
   limit?: number;
@@ -6,7 +6,7 @@ export type PaginatedRequest = {
   sortBy?: string;
 };
 
-export type PaginatedResponseAttr<T> = {
+type PaginatedResponseAttr<T> = {
   data: T;
   total: number;
   page: number;
@@ -15,3 +15,5 @@ export type PaginatedResponseAttr<T> = {
   sortBy: string;
   orderBy: string;
 };
+
+export type { PaginatedRequest, PaginatedResponseAttr };

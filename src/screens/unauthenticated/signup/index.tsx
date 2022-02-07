@@ -9,7 +9,7 @@ export const SignUp = (): React.ReactElement => {
   const { mutateAsync: doSignUp, isLoading } = useSignUp();
   const navigate = useNavigate();
 
-  const onSubmit = (user: CreateUser) => {
+  const onSubmit = (user: CreateUser): void => {
     const promise = doSignUp(user, {
       onSuccess: () => {
         navigate(LOGIN_PATH);

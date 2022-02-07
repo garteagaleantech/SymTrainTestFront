@@ -17,6 +17,10 @@ export const Dashboard = (): React.ReactElement => {
     return [...acum, ...recipes];
   }, []);
 
+  const getNextPage = async (): Promise<void> => {
+    await fetchNextPage();
+  };
+
   if (!recipes) return <p>There are no recipes to show yet.</p>;
 
   return (
@@ -36,7 +40,7 @@ export const Dashboard = (): React.ReactElement => {
       <div className="my-6 flex justify-center">
         <Button
           type="button"
-          onClick={() => fetchNextPage()}
+          onClick={getNextPage}
           isLoading={isFetchingNextPage || isLoading}
           disabled={!hasNextPage}
         >

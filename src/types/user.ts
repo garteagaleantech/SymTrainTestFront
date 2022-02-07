@@ -1,10 +1,12 @@
-export type User = {
+type User = {
   id: number;
   name: string;
   email: string;
   password: string;
 };
 
-export type CreateUser = Omit<User, 'id'>;
+type CreateUser = Omit<User, 'id'>;
 
-export type Credentials = Pick<User, 'email' | 'password'>;
+type Credentials = Pick<User, 'email' | 'password'>;
+
+export type { User, CreateUser, Credentials };

@@ -6,6 +6,7 @@ import { ItemMenu } from './item-menu';
 
 export const Header = (): React.ReactElement => {
   const { logout } = useLogout();
+
   return (
     <header className="w-full shadow-md">
       <nav className="flex h-16 items-center justify-center gap-x-6">

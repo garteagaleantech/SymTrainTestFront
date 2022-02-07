@@ -19,20 +19,20 @@ const UnauthenticatedApp = lazy(
 );
 
 export const Main = (): React.ReactElement => {
-  const userQuery = useProfile();
+  const { isLoading, isError, error, data } = useProfile();
 
-  if (userQuery.isLoading) {
+  if (isLoading) {
     return <Spinner fullScreen />;
   }
 
-  if (userQuery.isError) {
-    return <FullPageErrorFallback error={userQuery.error} />;
+  if (isError) {
+    return <FullPageErrorFallback error={error} />;
   }
 
   return (
     <Suspense fallback={<Spinner fullScreen />}>
       {(() => {
-        const user = userQuery.data;
+        const user = data;
         if (user) {
           return <AuthenticatedApp user={user} />;
         }

@@ -5,10 +5,7 @@ const RULES = {
 };
 
 module.exports = {
-  env: {
-    es6: true,
-    node: true
-  },
+  env: { es6: true },
   root: true,
   overrides: [
     {
@@ -23,6 +20,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:jsx-a11y/strict',
+        'plugin:import/typescript',
         'plugin:functional/external-recommended',
         'plugin:functional/no-mutations',
         'plugin:functional/no-object-orientation',
@@ -38,11 +36,27 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: './tsconfig.json'
       },
-      plugins: ['react', '@typescript-eslint', 'react-hooks', 'functional'],
+      plugins: [
+        'react',
+        '@typescript-eslint',
+        'jsx-a11y',
+        'import',
+        'react-hooks',
+        'unicorn',
+        'prefer-arrow',
+        'functional'
+      ],
       rules: {
         'no-void': RULES.OFF,
         'no-console': RULES.ERROR,
+        'line-comment-position': [RULES.ERROR, 'above'],
+        'multiline-comment-style': [RULES.ERROR, 'starred-block'],
+        'padding-line-between-statements': [
+          RULES.ERROR,
+          { blankLine: 'always', prev: '*', next: 'return' }
+        ],
         'prefer-arrow-callback': RULES.ERROR,
+
         'react/prop-types': RULES.OFF,
         'react/jsx-uses-react': RULES.OFF,
         'react/react-in-jsx-scope': RULES.OFF,
@@ -64,6 +78,8 @@ module.exports = {
             validateNested: true
           }
         ],
+        '@typescript-eslint/prefer-readonly-parameter-types': RULES.OFF,
+
         '@typescript-eslint/array-type': [RULES.ERROR, { default: 'generic' }],
         '@typescript-eslint/no-unused-vars': RULES.ERROR,
         '@typescript-eslint/explicit-module-boundary-types': RULES.ERROR,
@@ -73,6 +89,14 @@ module.exports = {
         '@typescript-eslint/triple-slash-reference': RULES.OFF,
         '@typescript-eslint/strict-boolean-expressions': RULES.OFF,
         '@typescript-eslint/prefer-nullish-coalescing': RULES.OFF,
+
+        'jsx-a11y/label-has-for': RULES.OFF,
+
+        'import/export': RULES.ERROR,
+        'import/exports-last': RULES.ERROR,
+        'import/first': RULES.ERROR,
+        'import/group-exports': RULES.ERROR,
+        'import/newline-after-import': RULES.ERROR,
         'import/no-absolute-path': RULES.ERROR,
         'import/no-cycle': [RULES.ERROR, { ignoreExternal: true }],
         'import/no-default-export': RULES.ERROR,
@@ -111,6 +135,11 @@ module.exports = {
             ignoreAccessorPattern: ['*.current', '*.current.*', '*.displayName']
           }
         ]
+      },
+      settings: {
+        react: {
+          version: 'detect'
+        }
       }
     }
   ]
