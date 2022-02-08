@@ -2,7 +2,7 @@ import { Button } from '@components/lib';
 import { Recipe } from '@custom-types/recipe';
 import { usePaginatedRecipes } from '@services/recipe';
 import { Fragment } from 'react';
-import { RecipeCard } from './recipe-card';
+import { RecipeCard } from './components/recipe-card';
 
 export const Dashboard = (): React.ReactElement => {
   const { data, hasNextPage, fetchNextPage, isLoading, isFetchingNextPage } =

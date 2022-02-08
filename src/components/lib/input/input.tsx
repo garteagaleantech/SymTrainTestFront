@@ -10,7 +10,7 @@ export type InputProps = {
   placeholder?: string;
   label: string;
   name: string;
-  type?: 'text' | 'password' | 'email' | 'number';
+  type?: 'text' | 'password' | 'email' | 'number' | 'file';
   'aria-label': string;
   rules?: RegisterOptions | ((formContext: UseFormReturn) => RegisterOptions);
   onChange?: React.ChangeEventHandler<HTMLInputElement>;

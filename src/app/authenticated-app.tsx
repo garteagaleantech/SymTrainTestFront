@@ -1,9 +1,9 @@
 import { AuthLayout } from '@components/layout/auth-layout';
 import { UserProvider } from '@context/user';
 import { User } from '@custom-types/index';
-import { Dashboard } from '@screens/authenticated';
+import { Dashboard, Recipe, RecipeDetails } from '@screens/authenticated';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { BASE_PATH } from './paths';
+import { BASE_PATH, RECIPE_DETAILS_PATH, RECIPE_PATH } from './paths';
 
 type AuthenticatedAppProps = {
   user: User;
@@ -16,6 +16,12 @@ const AuthenticatedApp = ({
     <AuthLayout>
       <Routes>
         <Route path={BASE_PATH} element={<Dashboard />} />
+        <Route path={RECIPE_PATH} element={<Recipe />} />
+        <Route
+          path={`${RECIPE_DETAILS_PATH}/:id`}
+          element={<RecipeDetails />}
+        />
+        <Route path={`${RECIPE_PATH}/:id`} element={<Recipe />} />
         <Route path="*" element={<Navigate to={BASE_PATH} />} />
       </Routes>
     </AuthLayout>

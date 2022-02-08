@@ -1,9 +1,20 @@
-import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
+import {
+  useInfiniteQuery,
+  UseInfiniteQueryResult,
+  useMutation,
+  UseMutationResult,
+  useQuery,
+  useQueryClient,
+  UseQueryResult
+} from 'react-query';
 import { useFetch } from '@context/fetch';
 import {
   Recipe,
   PaginatedResponseAttr,
-  PaginatedRequest
+  PaginatedRequest,
+  ErrorResponse,
+  CreateRecipe,
+  UpdateRecipe
 } from '@custom-types/index';
 
 type UsePaginatedRecipesFilters = Omit<PaginatedRequest, 'page'>;
@@ -12,6 +23,7 @@ const RECIPE_ENDPOINT = '/recipe';
 
 const recipeKeys = {
   all: ['recipe'],
+  get: (id: string) => [...recipeKeys.all, id],
   paginatedRecipes: (filters?: Record<string, unknown>) => [
     ...recipeKeys.all,
     filters
@@ -48,4 +60,90 @@ const usePaginatedRecipes = (
   );
 };
 
-export { usePaginatedRecipes };
+const useSaveRecipe = (): UseMutationResult<
+  Recipe,
+  ErrorResponse,
+  CreateRecipe
+> => {
+  const { authRequest } = useFetch();
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    async (recipeData: CreateRecipe) => {
+      const { data } = await authRequest.post<Recipe>(
+        RECIPE_ENDPOINT,
+        recipeData
+      );
+
+      return data;
+    },
+    {
+      onSuccess: (): void => {
+        void queryClient.invalidateQueries(recipeKeys.all);
+      }
+    }
+  );
+};
+
+const useUpdateRecipe = (): UseMutationResult<
+  Recipe,
+  ErrorResponse,
+  UpdateRecipe
+> => {
+  const { authRequest } = useFetch();
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    async (recipeData: UpdateRecipe) => {
+      const { data } = await authRequest.put<Recipe>(
+        RECIPE_ENDPOINT,
+        recipeData
+      );
+
+      return data;
+    },
+    {
+      onSuccess: (): void => {
+        void queryClient.invalidateQueries(recipeKeys.all);
+      }
+    }
+  );
+};
+
+const useRecipe = (id: string): UseQueryResult<Recipe, ErrorResponse> => {
+  const { authRequest } = useFetch();
+
+  return useQuery(recipeKeys.get(id), async () => {
+    const { data } = await authRequest.get<Recipe>(`${RECIPE_ENDPOINT}/${id}`);
+
+    return data;
+  });
+};
+
+const useDeleteRecipe = (): UseMutationResult<
+  void,
+  ErrorResponse,
+  { id: string }
+> => {
+  const { authRequest } = useFetch();
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    async ({ id }: { id: string }) => {
+      void (await authRequest.delete(`${RECIPE_ENDPOINT}/${id}`));
+    },
+    {
+      onSuccess: (): void => {
+        void queryClient.invalidateQueries(recipeKeys.all);
+      }
+    }
+  );
+};
+
+export {
+  usePaginatedRecipes,
+  useSaveRecipe,
+  useUpdateRecipe,
+  useRecipe,
+  useDeleteRecipe
+};
