@@ -37,7 +37,10 @@ export const RecipeDetails = (): React.ReactElement => {
       <h1 className="text-xl font-bold">{recipe?.title}</h1>
       <br />
       <img src={recipe?.image} alt={recipe?.title} />
-
+      <br />
+      <small className="text-sm font-normal italic">
+        By: {recipe?.user.name}
+      </small>
       <div className="mt-3 w-full text-left">
         <p>{recipe?.description}</p>
       </div>

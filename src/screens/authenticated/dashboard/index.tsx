@@ -21,7 +21,12 @@ export const Dashboard = (): React.ReactElement => {
     await fetchNextPage();
   };
 
-  if (!recipes) return <p>There are no recipes to show yet.</p>;
+  if (!recipes)
+    return (
+      <p className="text-center font-extrabold text-gray-400">
+        There are no recipes to show yet.
+      </p>
+    );
 
   return (
     <Fragment>
