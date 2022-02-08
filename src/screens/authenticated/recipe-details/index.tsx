@@ -44,14 +44,14 @@ export const RecipeDetails = (): React.ReactElement => {
       <div className="mt-3 w-full text-left">
         <p>{recipe?.description}</p>
       </div>
-      <div className="absolute -top-4 -right-6 flex w-24 gap-x-3 rounded-full border border-gray-300 bg-white p-3 shadow-md">
+      <div className="absolute -top-4 -right-6 flex w-20 gap-x-3 rounded-full border border-gray-300 bg-white py-1 px-3 shadow-md lg:w-24 lg:py-3">
         <Button
           appearance="link"
           onClick={deleteRecipe}
           disabled={isLoading || parseInt(recipe?.userId ?? '') !== user.id}
         >
           <BsDashCircleFill
-            className="inline-block text-3xl text-red-500"
+            className="inline-block text-xl text-red-500 lg:text-3xl"
             title="Delete recipe"
           />
         </Button>
@@ -61,7 +61,7 @@ export const RecipeDetails = (): React.ReactElement => {
           disabled={isLoading || parseInt(recipe?.userId ?? '') !== user.id}
         >
           <BsFillPencilFill
-            className="inline-block text-3xl text-blue-500"
+            className="inline-block text-xl text-blue-500 lg:text-3xl"
             title="Edit recipe"
           />
         </Button>

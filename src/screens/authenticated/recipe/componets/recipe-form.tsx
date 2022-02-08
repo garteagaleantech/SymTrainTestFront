@@ -50,7 +50,7 @@ export const RecipeForm = ({
       {id && data && !showFileInput ? (
         <div className="pb-3 text-center">
           <div className="relative inline-block">
-            <img src={data.image} alt={data.title} />
+            <img src={data.image} alt={data.title} className="max-w-full" />
             <Button appearance="link" onClick={deleteImage}>
               <BsDashCircleFill
                 className="absolute -top-3 -right-3 text-3xl text-red-500"

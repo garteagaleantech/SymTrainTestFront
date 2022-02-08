@@ -31,7 +31,8 @@ export const Button = ({
     className={classNames(
       'flex gap-x-2 rounded-full',
       appearances[appearance],
-      'py-3 px-12',
+      'py-3',
+      appearance === 'link' ? '' : 'px-12',
       !!disabled && 'cursor-not-allowed bg-opacity-60 text-opacity-60'
     )}
     disabled={isLoading || disabled}
