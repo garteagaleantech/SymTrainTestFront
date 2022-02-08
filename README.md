@@ -4,7 +4,7 @@ _Author: Gerardo Arteaga - garteaga@lean-tech.io_
 
 This Website was created as a solution for the SymTrain test about creating a Recipe Webpage, where users can register, login and create, update, delete recipes. The application is responsive for mobile devices like cellphones.
 
-## Repository (SymTrainTestFront)[https://github.com/garteagaleantech/SymTrainTestFront]
+## Repository [SymTrainTestFront](https://github.com/garteagaleantech/SymTrainTestFront)
 
 To clone the repository please run:
 
